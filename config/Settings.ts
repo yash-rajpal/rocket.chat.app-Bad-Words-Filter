@@ -2,6 +2,9 @@ import { ISetting, SettingType } from '@rocket.chat/apps-engine/definition/setti
 
 export enum AppSetting {
     LinkToExtractBadWords = 'link_to_extract_bad_words',
+    ApplyFilterToAllChannels = 'apply_filter_to_all_channels',
+    ListOfBlacklistedWords = 'list_of_blacklisted_words',
+    ListOfWhitelistedWords = 'list_whitelisted_words',
 }
 
 export const settings: Array<ISetting> = [
@@ -11,6 +14,29 @@ export const settings: Array<ISetting> = [
         type: SettingType.STRING,
         packageValue: '',
         i18nLabel: 'link_to_extract_bad_words',
+        required: true,
+    },
+    {
+        id: AppSetting.ApplyFilterToAllChannels,
+        public: true,
+        type: SettingType.BOOLEAN,
+        packageValue: '',
+        i18nLabel: 'apply_filter_to_all_channels',
+        required: true,
+    },
+    {
+        id: AppSetting.ListOfBlacklistedWords,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: '',
+        i18nLabel: 'list_of_blacklisted_words',
+        required: true,
+    },    {
+        id: AppSetting.ListOfWhitelistedWords,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: '',
+        i18nLabel: 'list_whitelisted_words',
         required: true,
     },
 ];
