@@ -5,10 +5,13 @@ import { AppSetting } from '../config/Settings';
 export class OnSettingUpdatedHandler {
     constructor(private readonly app: IApp, private readonly read: IRead, private readonly http: IHttp) {}
 
-    public async run() {
+    public async run():Promise<Array<string>> {
         const linkToExtractBadWords: string = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.LinkToExtractBadWords);
+        const applyFilterToAllChannels: boolean = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.ApplyFilterToAllChannels);
+        const blacklistedWords: string = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.ListOfBlacklistedWords);
+        const whitelistedWords: string = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.ListOfWhitelistedWords);
 
-        this.app.getLogger().debug("The link is:", linkToExtractBadWords);
-        console.log("Link", linkToExtractBadWords)
+        this.app.getLogger().debug("The link is:", blacklistedWords);
+        return blacklistedWords.split(',').map(word => word.trim());
     }
 }
