@@ -1,0 +1,16 @@
+{
+    "id": "7931dd1e-776c-4245-aaa1-b81085e139ad",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.19.0",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Yash Rajpal",
+        "homepage": "Prototype",
+        "support": "Prototype"
+    },
+    "name": "Bad Words Filter",
+    "nameSlug": "bad-words-filter",
+    "classFile": "BadWordsFilterApp.ts",
+    "description": "Filter bad words from messages",
+    "implements": []
+}
