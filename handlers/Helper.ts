@@ -24,10 +24,16 @@ function replaceWord(string:string):string {
 }
 
 export function clean(blackListedWords: Array<string>, string: string) {
-    return string
+    var isanyWordProfane:boolean = false;
+    var cleanText:string = string
         .split(splitRegex)
         .map((word) => {
-            return isProfane(blackListedWords, word) ? replaceWord(word) : word;
+            if(isProfane(blackListedWords, word)) {
+                isanyWordProfane = true;
+                word = replaceWord(word);
+            }
+            return word;
         })
         .join(splitRegex.exec(string)![0]);
+    return {isanyWordProfane, cleanText};
 }
