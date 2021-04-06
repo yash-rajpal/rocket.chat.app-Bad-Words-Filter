@@ -11,7 +11,10 @@ export class OnSettingUpdatedHandler {
         const blacklistedWords: string = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.ListOfBlacklistedWords);
         const whitelistedWords: string = await this.read.getEnvironmentReader().getSettings().getValueById(AppSetting.ListOfWhitelistedWords);
 
-        this.app.getLogger().debug("The link is:", blacklistedWords);
+        const blacklistedWordsFromURL =  (await this.http.get(linkToExtractBadWords)).content;
+
+        this.app.getLogger().debug("These are the extracted words from url", blacklistedWordsFromURL);
+
         return blacklistedWords.split(',').map(word => word.trim());
     }
 }

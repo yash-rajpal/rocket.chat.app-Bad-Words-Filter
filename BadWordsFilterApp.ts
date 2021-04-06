@@ -24,7 +24,7 @@ export class BadWordsFilterApp extends App implements IPreMessageSentModify {
     public blackListedWords:Array<string>
 
     public async onEnable(environment: IEnvironmentRead, configurationModify: IConfigurationModify):Promise<boolean>{
-        this.blackListedWords = (await environment.getSettings().getById(AppSetting.ListOfBlacklistedWords)).value
+        this.blackListedWords = ((await environment.getSettings().getById(AppSetting.ListOfBlacklistedWords)).value).split(',').map(word => word.trim());
         
         this.getLogger().debug("FROM Enable", this.blackListedWords)
         return true;

@@ -22,10 +22,12 @@ export class PreMessageSentHandler {
         const room = this.message.room;
         const sender = this.message.sender;
 
-        const newMessage = this.builder.setData(this.message);
-        newMessage.setText(cleanText);
-        newMessage.setRoom(room);
-        newMessage.setSender(sender);
+        // const newMessage = this.builder.setData(this.message);
+        // newMessage.setText(cleanText);
+        // newMessage.setRoom(room);
+        // newMessage.setSender(sender);
+
+        const newMessage = this.builder.setText(cleanText).setRoom(room).setSender(sender);
 
         return newMessage.getMessage();
     }
