@@ -5,6 +5,8 @@ export enum AppSetting {
     ApplyFilterToAllChannels = 'apply_filter_to_all_channels',
     ListOfBlacklistedWords = 'list_of_blacklisted_words',
     ListOfWhitelistedWords = 'list_whitelisted_words',
+    IncludeChannels = 'include_channels',
+    ExcludeChannels = 'exclude_channels'
 }
 
 export const settings: Array<ISetting> = [
@@ -17,6 +19,22 @@ export const settings: Array<ISetting> = [
         required: true,
     },
     {
+        id: AppSetting.ListOfBlacklistedWords,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: '',
+        i18nLabel: 'list_of_blacklisted_words',
+        required: true,
+    },    
+    {
+        id: AppSetting.ListOfWhitelistedWords,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: '',
+        i18nLabel: 'list_whitelisted_words',
+        required: true,
+    },
+    {
         id: AppSetting.ApplyFilterToAllChannels,
         public: true,
         type: SettingType.BOOLEAN,
@@ -25,18 +43,19 @@ export const settings: Array<ISetting> = [
         required: true,
     },
     {
-        id: AppSetting.ListOfBlacklistedWords,
+        id: AppSetting.IncludeChannels,
         public: true,
         type: SettingType.STRING,
         packageValue: '',
-        i18nLabel: 'list_of_blacklisted_words',
+        i18nLabel: 'Include_the_Channels',
         required: true,
-    },    {
-        id: AppSetting.ListOfWhitelistedWords,
+    },
+    {
+        id: AppSetting.ExcludeChannels,
         public: true,
         type: SettingType.STRING,
         packageValue: '',
-        i18nLabel: 'list_whitelisted_words',
+        i18nLabel: 'Exclude_the_Channels',
         required: true,
     },
 ];

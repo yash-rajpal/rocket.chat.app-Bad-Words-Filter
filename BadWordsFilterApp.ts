@@ -44,10 +44,9 @@ export class BadWordsFilterApp extends App implements IPreMessageSentModify {
     public async onSettingUpdated(setting: ISetting, configurationModify: IConfigurationModify, read: IRead, http: IHttp): Promise<void> {
         const onSettingUpdatedHandler: OnSettingUpdatedHandler = new OnSettingUpdatedHandler(this, read, http);
         this.blackListedWords = await onSettingUpdatedHandler.run();
-        this.getLogger().debug("FROM MAIN", this.blackListedWords)
     }
 
-    protected async extendConfiguration(configuration: IConfigurationExtend): Promise<void> {
+    protected async extendConfiguration(configuration: IConfigurationExtend, environmentRead: IEnvironmentRead): Promise<void> {
         await Promise.all(settings.map((setting) => configuration.settings.provideSetting(setting)));
     }
 }
